@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+
+{% load bulma_tags %}
+{% block title %}Oferty{% endblock %}
+{% load static %} 
+
+{% block content %}
+<div class="navbar-dropdown is-right">
+  <!-- navbar-item, navbar-divider etc. -->
+</div>
+
+<div class="centered">
+    <br>
+    <br>
+    <h2 >Dodaj Oferte </h2>
+    <br>
+  <form  name ="form" method="post" action="/add_offer/" enctype="multipart/form-data" >
+    {% csrf_token %} 
+    {{ form|bulma }} 
+      <button type="submit">Zapisz</button>
+  </form>
+</div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

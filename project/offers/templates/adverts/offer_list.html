@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Oferty{% endblock %}
+{% load static %} 
+
+{% block content %}
+
+{% for offer in offer_list %}
+
+
+
+<ul class="list">
+</br>
+
+    <li class="waves-effect">
+      <a href="{% url 'detail' offer.pk %}">
+      <div class="valign-wrapper">
+        {% if offer.photo %}
+
+        <img class="materialboxed" width="150" height="150" src="{{ offer.photo.url }}">
+
+        {% endif %}
+        <div class="title">
+            {{ offer }}<br>
+          <span>{{offer.price}}</span>
+     
+        </div>
+        
+      </div>
+    </a>
+    </li>
+</div>
+</br>
+</ul>
+
+
+
+ 
+{% endfor %}
+
+
+{% endblock %}
