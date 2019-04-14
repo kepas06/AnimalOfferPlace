@@ -4,7 +4,7 @@
 <div class="row"> 
     <div class="innerRow1"> 
         <br>
-            <img src="{{ object.photo.url }}" style="width:100%; height:auto;"  >
+   
     <div id="content-container" class="container p-none">
 
         <div class="lgn-container col-lg-8">
@@ -12,13 +12,15 @@
 
         <h1>{{ object.title }}</h1>
         <h5> {{ object.content }}</h5>
-        <h5>Cena: {{ object.price }}</h5>
-        <h5>Kontakt: {{ object.contact}}</h5>
         <h5>Użytkownik: {{ object.user}}</h5>
         {% if request.user == object.user %}
-        <a href="{% url 'updateOffer' offer.pk %}">Edytuj</a>
-        <a href="{% url 'offer_delete' offer.pk %}" class="waves-effect waves-light btn-large">Usuń ofertę </a>
-        
+        <br>
+        <a href="{% url 'updateQuestion' object.pk %}" class="waves-effect waves-light btn-large">Edytuj</a>
+        <br>
+        {{object.pk}}
+ 
+        <a href="{% url 'question_delete' object.pk %}" class="waves-effect waves-light btn-large">Usuń Prośbę </a>
+        <br>
         {% endif %}
         <br>
         <a href="javascript:history.go(1)" class="waves-effect waves-light btn-large">Powrót </a>

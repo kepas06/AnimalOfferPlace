@@ -18,50 +18,44 @@
   <link rel="stylesheet" type="text/css" href="{% static 'app/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'app/home.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'app/offer.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'app/question.css' %}">
   <script src="{% static 'app/js/base.js' %}"></script>   
 
   <title>{% block title %}Django{% endblock %}</title>
-</head>
-<body>
-  <main>
+
+
+ 
+     
       {% if user.is_authenticated %}
-      <nav>
+      <nav class="orange darken-2">
         
-          <div class="nav-wrapper">
-          <a href="{% url 'home' %}" class="brand-logo"> Anichange {{request.user.username}}</a>
+      <div  class="nav-wrapper">
+
+          <a href="{% url 'home' %}" class="brand-logo"><i class="material-icons">cloud</i> Safari Exchange</a>
+        
+        
+    
          
-        
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-        
-
-
                 <ul id="dropdown1" class="dropdown-content">
                     <li><a href="{% url 'settings' %}">Ustawienia</a></li>
                     <li><a href="#!">two</a></li>
                     <li class="divider"></li>
                     <li><a href="#!">three</a></li>
+                </ul> 
+               
+              <ul id="side-nav" class="right hide-on-med-and-down">
+                <li><a class="btn " href ="{% url 'add_offer' %}"><i class="material-icons right">add</i>Dodaj Ofertę</a></li>
+                <li><a class="btn " href ="{% url 'add_question' %}"><i class="material-icons right">add</i>Dodaj Prośbę</a></li>
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Mój Profil<i class="material-icons right"></i></a></li>
+                  <li><a  href="{% url 'logout' %}" >Wyloguj<i class="material-icons right"></i></a></li>
                 </ul>
-                 
-                    <div class="nav-wrapper">
-          
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li><a class="waves-effect waves-light btn" href ="{% url 'add_offer' %}"><i class="material-icons right">add</i>Dodaj Ofertę</a></li> 
-                      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Mój Profil<i class="material-icons right"></i></a></li>
-                      <li><a  href="{% url 'logout' %}" >Wyloguj<i class="material-icons right"></i></a></li>
-                    </ul>
-                 
-          
-
-
-            </ul>
-        
-         
+           
           </div>
         </nav>
       {% else %}
-      <nav>
+      <nav class="orange darken-2">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Anichange</a>
+            <a href="{% url 'home' %}" class="brand-logo">Safari Exchange</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <a href="{% url 'login' %}">Zaloguj</a>
     
@@ -73,8 +67,11 @@
         </nav>
         {% endif %}
     
+
+
+<body>
+
     {% block content %}
     {% endblock %}
-  </main>
 </body>
 </html>

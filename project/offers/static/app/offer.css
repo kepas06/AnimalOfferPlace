@@ -36,6 +36,44 @@ body {
 
     right:-10%; 
   }
+
   
 
+  
+
+  .posts {
+    
+    display: flex;
+    flex-flow: row wrap;
+
+
+ 
+  }
+
+  .pageHolder{
+    overflow: auto;
+    width: 100%;
+    float: left;
+  }
+
+  .category-tile {
+    float: left !important;
+    background: #3c3f44;
+    color:white;
+    font-weight: bold;
+    font-size:20px;
+    margin-left:20px;
+    margin-top:10px;
+    text-align:center;
+
+    height: 50px;
+    width: calc( (100% / 6) - 40px );
+
+  }
+
+  body{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
   

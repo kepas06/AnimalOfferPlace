@@ -1,16 +1,15 @@
 {% extends 'base2.html' %}
-
 {% load bulma_tags %}
-{% block title %}Oferty{% endblock %}
+{% block title %}Zapytania{% endblock %}
 {% load static %} 
 <br>
 {% block content %}
 
 <div class="row">
     <div class="innerRow1"> 
-    <h2 >Dodaj Ofertę </h2>
+    <h2 >Dodaj Zapytanie</h2>
     <br>
-  <form  name ="form" method="post" action="/add_offer/" enctype="multipart/form-data" >
+  <form  name ="form" method="post" action="/add_question/" >
     {% csrf_token %} 
     {{ form|bulma }} 
   

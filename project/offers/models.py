@@ -49,6 +49,16 @@ class Offer(models.Model):
         return self.title
 
 
+class Question(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    title = models.CharField(max_length=100)
+    content = models.TextField(blank=False)
+    category = models.ForeignKey('Category', null=True, blank=True,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def get_absolute_url(self):
+        return reverse('questions:question_detail',args=[self.title])
+
+
 class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -25,7 +25,28 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('offer/<int:id>/delete/', views.OfferDelete.as_view(), name = 'offer_delete'),
     path('offer/<str:category>/', views.GetOffersByCategory.as_view(), name = 'offers'),
+    path('offer/list/<slug:slug>/', views.GetOffersFromCategory.as_view(), name = 'offers_filtered'),
+
     path('offer/detail/<int:pk>/', views.OfferDetail.as_view(template_name='adverts/offer_detail.html'), name='detail'),
+    path('offer/update/<int:pk>/', views.OfferUpdate.as_view(), name='updateOffer'),
+
+
+    path('add_question/', views.AddQuestion.as_view(), name='add_question'),
+
+    path('offer/<str:category>/', views.GetOffersByCategory.as_view(), name = 'offers'),
+    path('offer/list/<str:category>/', views.GetOffersFromCategory.as_view(), name = 'offers_filtered'),
+    
+    path('question/<str:category>/', views.QuestionsByCategory.as_view(), name = 'questions'),
+    path('question/list/<slug:slug>/', views.QuestionsFromCategory.as_view(), name = 'questions_filtered'),
+    
+    
+
+
+    path('question/detail/<int:pk>/', views.QuestionDetail.as_view(template_name='questions/question_detail.html'), name='questions_detail'),
+    path('question/<int:id>/delete/', views.QuestionDelete.as_view(), name = 'question_delete'),
+    path('question/update/<int:pk>/', views.QuestionUpdate.as_view(), name='updateQuestion'),
+
+
 
 ]
 

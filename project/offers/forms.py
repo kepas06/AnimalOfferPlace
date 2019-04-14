@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from offers.models import UserProfile, Offer, Category
+from offers.models import UserProfile, Offer, Category,Question
 
 from django.utils.translation import gettext_lazy as _
 
@@ -29,6 +29,7 @@ class ProfileForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','city', 'contact')
 
 
+
 class OfferForm(ModelForm):
     class Meta:
         model = Offer
@@ -43,4 +44,17 @@ class OfferForm(ModelForm):
         self.fields['contact'].label = "Kontakt"
         self.fields['photo'].label = "Zdjęcie"
         # widgets = {'slug': forms.HiddenInput, initial=}
+
+
+class QuestionForm(ModelForm):
+    class Meta:
+        model = Question
+        fields = ('title','content','category')
+    
+    def __init__(self, *args, **kwargs):
+        super(QuestionForm, self).__init__(*args, **kwargs)
+        self.fields['title'].label = "Tytuł"
+        self.fields['content'].label = "Treść"
+        self.fields['category'].label = "Kategoria"
+        
 

@@ -14,6 +14,11 @@
   padding-left: 20%;
 }
 
+.menu{
+  float:right;
+  padding-right: 2%;
+
+}
 
 .centered-row{
   position: absolute;
@@ -59,6 +64,17 @@ div.card-container {
   width: 100%;
 }
 
+.button-small{
+  width: 30px;
+}
+
+a.waves-effect-light.btn{
+  width:150px !important;
+}
+
+.col.s12 > .btn {
+  width: 100%;
+}
 .center-cols > .col {
   float:none; /* disable the float */
   display: inline-block; /* make blocks inline-block */
@@ -74,10 +90,11 @@ div.card-container {
   }
 
   .title{
-    position: absolute;
-    left: 45%;
+
     font-family: 'Montesterrat';
+    font-weight: bold;
     font-size: 40px;
+    margin-right:50px;
 
     color: black;
   }
@@ -88,5 +105,6 @@ div.card-container {
     text-align: center;
     
   }
+
 
   

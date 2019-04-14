@@ -6,6 +6,8 @@
 {% load static %} 
 <link rel="stylesheet" type="text/css" href="{% static 'app/home.css' %}">
 {% block content %}
+
+
 <div class="center">
 <div class="row">
    <div class="row col s12 m10 l9">
@@ -84,17 +86,12 @@
             <span class="card-title">Jedzenie</span>
          </a>
       </div>
-      <div class="col s12 m4 card">
-         <a href="{% url 'offers' 'Jedzenie' %}">
-            <div class="card-image">
-               <img src="{% static 'siteImages/zwierzeta.png' %}">
-            </div>
-            <span class="card-title">Jedzenie</span>
-         </a>
-      </div>
+     
    </div>
 </div>
 </div>
 </div>
+
+
 {% endblock %}
 
