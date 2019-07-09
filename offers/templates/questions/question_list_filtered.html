@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+{% block title %}Zapytania{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'app/offer.css' %}">
+
+{% block content %}
+
+ 
+
+<br>
+<div class="row">
+{% for cat in category %}
+<a href="{% url  'questions' cat.slug %}">
+      <div class="category-tile" >{{cat.name}} </div>
+
+  {% endfor %}
+</a>
+</div>
+
+<div class="innerRow1"> 
+  <div id="content-container" class="container p-none">
+      <div class="lgn-container col-lg-8">
+<a class="waves-effect waves-light btn-large" href="{% url 'offers' category_name %}"><i class="material-icons left">cloud</i>Sortuj po Ofertach</a>
+
+</div>
+</div>
+</div>
+      
+
+
+
+
+{% for q in question_list %}
+
+
+
+<ul class="list">
+</br>
+
+   
+      <a href="{% url 'questions_detail' q.pk %}" style="color:black;">
+        <li class="waves-effect">
+
+            <div class="right title-question-more">
+                <h5 style="title-question-more">{{q.category}}</h5>
+                <br>
+                <h5 style="title-question-more">{{q.created_at}}</h5>
+              </div>
+      <div class="valign-wrapper">
+      
+  
+       
+        <div class="title-question">
+          <h3> {{q.title}}</h5>
+     
+          <h5>Użytkownik {{q.user}}</h5>
+ 
+        </div>
+              
+      </div>
+    
+            
+     
+        
+        
+
+      
+     
+    </li>
+  
+    </a>
+  
+</div>
+</br>
+</ul>
+
+{% empty %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+ 
+  {% if user.is_authenticated %}
+  <h2> Nie ma aktualnie próśb w tej kategorii. Zgłoś swoją własną prośbę ! </h2>
+    <a class="btn-floating btn-large waves-effect waves-light red"  href ="{% url 'add_question' %}"><i class="material-icons">add</i></a>
+    <h2> Lub </h2>
+ 
+      <button class="btn-large"  onclick="goBack()" >Powróć
+      
+          
+        </button>
+        {% else %}
+        <h2> Nie ma aktualnie próśb w tej kategorii <button class="btn-large"  href="{% url 'login' %}" >Zaloguj</button>  sie aby dodać swoją własną </h2>
+        {% endif %}
+
+       
+
+        <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script> 
+
+</div>
+
+ 
+{% endfor %}
+
+
+{% endblock %}

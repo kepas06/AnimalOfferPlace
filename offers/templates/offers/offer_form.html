@@ -1,0 +1,80 @@
+
+
+{% block title %}Oferty{% endblock %}
+{% load static %} 
+
+{% block content %}
+
+
+  <h2 class="col-lg-11">Dodaj Oferte </h2>
+    <div class="row"> 
+      <div class="innerRow1"> 
+      <div id="content-container" class="container p-none">
+          <div class="lgn-container col-lg-8">
+  <form  name ="form" method="post" action="/add_offer/" enctype="multipart/form-data" >
+    {% csrf_token %} 
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.title.errors }}
+        <label for="{{ form.title.id_for_label }}">Tytuł</label>
+        {{ form.title }}
+    </div>
+    <br>
+    <br>
+    <div class="fieldWrapper">
+        {{ form.content.errors }}
+        <label for="{{ form.content.id_for_label }}">Treść</label>
+        {{ form.content }}
+    </div>
+    <br>
+    <br>
+    <div class="fieldWrapper">
+        {{ form.contact.errors }}
+        <label for="{{ form.contact.id_for_label }}">Telefon</label>
+        {{ form.contact }}
+    </div>
+    <br>
+    <br>
+    <div class="fieldWrapper">
+        {{ form.photo.errors }}
+        <label for="{{ form.photo.id_for_label }}">Zdjęcie</label>
+        {{ form.photo }}
+    </div>
+    <br>
+    <br>
+ 
+    <div class="fieldWrapper">
+        {{ form.category.errors }}
+        <label for="{{ form.category.id_for_label }}">Kategoria</label>
+        {{ form.category }}
+    
+    </div>
+    <br>
+    <br>
+          <button type="submit">Zapisz</button>
+  </form>
+
+
+
+ 
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<script>
+       $(document).ready(function() {
+    $('select').material_select();
+    });
+        </script>
+
+
+
+{% endblock %}

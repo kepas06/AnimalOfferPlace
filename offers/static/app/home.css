@@ -1,0 +1,17 @@
+.dropdown-content{
+    float:right;
+    margin:0 auto;
+    width: max-content !important;
+    height:auto !important;
+    overflow:auto;
+ }
+
+
+
+.link-list{
+   padding-left: 20%;
+}
+
+
+
+

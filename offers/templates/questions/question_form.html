@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+{% load bulma_tags %}
+{% block title %}Zapytania{% endblock %}
+{% load static %} 
+<br>
+{% block content %}
+
+<div class="row">
+    <div class="innerRow1"> 
+    <h2 >Dodaj Zapytanie</h2>
+    <br>
+  <form  name ="form" method="post" action="/add_question/" >
+    {% csrf_token %} 
+    {{ form|bulma }} 
+  
+      <button type="submit" class="waves-effect waves-light btn ">Zapisz</button>
+  </form>
+<br>
+<br>
+
+<br>
+
+
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

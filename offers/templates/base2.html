@@ -1,0 +1,82 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  {% load static %} 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.ss' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'app/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'app/home.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'app/offer.css' %}">
+
+  <script src="{% static 'app/js/base.js' %}"></script>   
+
+  <title>{% block title %}Django{% endblock %}</title>
+
+  <main>
+      {% if user.is_authenticated %}
+      <nav class="orange darken-2">
+        
+      <div  class="nav-wrapper">
+
+          <a href="{% url 'home' %}" class="brand-logo"><i class="material-icons">cloud</i> Safari Exchange</a>
+       <ul  id="nav-mobile" class="right side-nav">
+
+          </ul> 
+        
+        
+    
+
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="{% url 'settings' %}">Ustawienia</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">three</a></li>
+                </ul> 
+                <ul id="side-nav" class="right hide-on-med-and-down">
+                 
+                    <li><a class=" btn " href ="{% url 'add_offer' %}"><i class="material-icons right">add</i>Dodaj Ofertę</a></li>
+                  </ul>
+              <ul id="side-nav" class="right hide-on-med-and-down">
+                 
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Mój Profil<i class="material-icons right"></i></a></li>
+                  <li><a  href="{% url 'logout' %}" >Wyloguj<i class="material-icons right"></i></a></li>
+                </ul>
+           
+          </div>
+        </nav>
+      {% else %}
+      <nav class="orange darken-2">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Anichange</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <a href="{% url 'login' %}">Zaloguj</a>
+    
+            </ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <a href="{% url 'signup' %}">Załóż konto</a>
+            </ul>
+          </div>
+        </nav>
+        {% endif %}
+    
+  
+  </main>
+</head>
+<body>
+  
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

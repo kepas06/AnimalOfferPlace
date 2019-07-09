@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row"> 
+        <div class="innerRow1"> 
+            <br>
+        <div id="content-container" class="container p-none">
+        <div class="lgn-container col-lg-8">
+        {% if request.user == object.user %}
+        <form action='.' method='POST'>{% csrf_token %}
+            <h1>Czy jesteś pewien że chcesz usunąć Ofertę o tytule ? "{{ object.title }}"?</h1>
+            <p><input type='submit' value='Tak' />  <a href='../'>Cofnij</a></p>
+        </form>
+        {% endif %}
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

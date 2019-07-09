@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+  
+     <div clas="row">
+    <div class="list2">
+            <ul class = "collection with-header">
+                <li class="collection-header"><h4>Ustawienia</h4></li>
+
+                <a href="{% url 'password_change' %}" class="link-list">
+                    <li class="collection-item"> Zmień hasło</li>
+                </a>
+                </br>
+                <li class="collection-item"> Następna opcja</li>
+                </br>
+                <li class="collection-item"> Następna opcja</li>
+              
+        
+              
+            </ul>
+            </div>
+        </div>
+
+        {% endif %}
+{% endblock %}

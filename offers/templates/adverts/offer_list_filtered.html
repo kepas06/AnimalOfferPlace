@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+{% block title %}Oferty{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'app/offer.css' %}">
+
+
+{% block content %}
+
+ 
+
+
+<br>
+<div class="row">
+{% for cat in category %}
+<a href="{% url  'offers_filtered' cat.slug %}">
+      <div class="category-tile" >{{cat.name}} </div>
+
+
+</a>
+{% endfor %}
+</div>
+
+<div class="innerRow1"> 
+  <div id="content-container" class="container p-none">
+      <div class="lgn-container col-lg-8">
+<a class="waves-effect waves-light btn-large" href="{% url 'questions' category_name %}"><i class="material-icons left">cloud</i>Sortuj po poszukiwanych</a>
+
+</div>
+</div> 
+</div>
+
+
+{% for offer in offer_list %}
+
+
+
+<ul class="list">
+</br>
+
+    <li class="waves-effect">
+      <a href="{% url 'detail' offer.pk %}" style="color:black">
+
+          <div class="right title-question-more">
+              <h5 class="title-question-more">{{offer.category}}</h5>
+              <br>
+              <h5 class="title-question-more">{{offer.created_at}}</h5>
+            </div>
+            <div class="left">
+                <div class="title">
+                {{ offer }}<br>
+                <span>Cena: {{offer.price}} zł</span>
+              </div>
+           
+              </div>
+      <div class="valign-wrapper">
+        {% if offer.photo %}
+
+        <img class="materialboxed" width="150" height="150" src="{{ offer.photo.url }}">
+
+        {% endif %}
+      </div>
+
+    </a>
+    </li>
+</div>
+</br>
+</ul>
+
+{% empty %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+ 
+  {% if user.is_authenticated %}
+  <h2> Nie ma aktualnie ofert w tej kategorii. Dodaj swoją własną ofertę ! </h2>
+    <a class="btn-floating btn-large waves-effect waves-light red"  href ="{% url 'add_offer' %}"><i class="material-icons">add</i></a>
+    <h2> Lub </h2>
+ 
+      <button class="btn-large"  onclick="goBack()" >Powróć</button>
+        {% else %}
+        <h2> Nie ma aktualnie ofert w tej kategorii <button class="btn-large"  href="{% url 'login' %}" >Zaloguj</button>  sie aby dodać swoją własną </h2>
+        {% endif %}
+
+       
+
+        <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script> 
+
+</div>
+
+ 
+{% endfor %}
+
+
+{% endblock %}

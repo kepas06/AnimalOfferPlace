@@ -1,0 +1,97 @@
+
+
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'app/home.css' %}">
+{% block content %}
+
+
+<div class="center">
+<div class="row">
+   <div class="row col s12 m10 l9">
+      <!--1st row containing 2 cards-->
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Akwarystyka' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/ryba.jpg' %}">
+            </div>
+            <span class="card-title">Akwarystyka</span>
+         </a>
+      </div>
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Bezkręgowce' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/pajak.jpg' %}">
+            </div>
+            <span class="card-title">Bezkręgowce</span>
+         </a>
+      </div>
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Ptaki' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/ptaki.jpg' %}">
+            </div>
+            <span class="card-title">Ptaki</span>
+         </a>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="row col s12 m10 l9">
+      <!--1st row containing 2 cards-->
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Ssaki' %}">
+         <div class="card-image">
+            <img src="{% static 'siteImages/ssak.jpeg' %}">
+         </div>
+         <span class="card-title">Ssaki</span>
+         </a>
+      </div>
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Zwierzęta Farmerskie' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/farmerskie.jpg' %}">
+            </div>
+            <span class="card-title">Zwierzęta Farmerskie</span>
+         </a>
+      </div>
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Zwierzęta Domowe' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/domowe1.jpg' %}">
+            </div>
+            <span class="card-title">Zwierzęta Domowe</span>
+         </a>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="row col s12 m10 l9">
+      <!--1st row containing 2 cards-->
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Terrarystyka' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/snake.jpg' %}">
+            </div>
+            <span class="card-title">Terrarystyka</span>
+         </a>
+      </div>
+      <div class="col s12 m4 card">
+         <a href="{% url 'offers' 'Jedzenie' %}">
+            <div class="card-image">
+               <img src="{% static 'siteImages/zwierzeta.png' %}">
+            </div>
+            <span class="card-title">Jedzenie</span>
+         </a>
+      </div>
+     
+   </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+

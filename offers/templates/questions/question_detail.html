@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row"> 
+    <div class="innerRow1"> 
+        <br>
+   
+    <div id="content-container" class="container p-none">
+
+        <div class="lgn-container col-lg-8">
+
+
+        <h1>{{ object.title }}</h1>
+        <h5> {{ object.content }}</h5>
+        <h5>Użytkownik: {{ object.user}}</h5>
+        {% if request.user == object.user %}
+        <br>
+        <a href="{% url 'updateQuestion' object.pk %}" class="waves-effect waves-light btn-large">Edytuj</a>
+        <br>
+        {{object.pk}}
+ 
+        <a href="{% url 'question_delete' object.pk %}" class="waves-effect waves-light btn-large">Usuń Prośbę </a>
+        <br>
+        {% endif %}
+        <br>
+        <a href="javascript:history.go(1)" class="waves-effect waves-light btn-large">Powrót </a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+{% endblock %}
