@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+import django_heroku
+import dj_database_url       # Place this line preferably at the top
+from decouple import config  # Place this line preferably at the top
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +32,7 @@ LOGIN_URL = 'registration/login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'registration/login'
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,19 +82,22 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
-        'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'animals',
-        'USER': 'lukasz',
-        'PASSWORD': 'ALdx8624',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+    #     'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+    #     'PORT': '',
+    # }
+      'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
@@ -132,11 +138,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 ROOT_PATH = os.path.dirname(__file__)
-STATICFILES_DIRS = [os.path.join(ROOT_PATH, 'static')]
-STATIC_ROOT = '/home/lukasz/Django/AnimalOffers/project/offers/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -144,3 +151,5 @@ EMAIL_HOST_USER = 'lukaszwasyl75@gmail.com'
 EMAIL_HOST_PASSWORD = 'hjkhtbimhqhbmjah'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+django_heroku.settings(locals())
